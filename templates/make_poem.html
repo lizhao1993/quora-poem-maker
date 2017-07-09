@@ -1,0 +1,53 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Quora Poem Maker{% endblock %}
+{% block navbar %}
+{% endblock %}
+{% block content %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+   <div class="container">
+    <div class="jumbotron">
+    
+
+        <form action="" method="post">
+            {{ form.csrf }}
+            <div class="input submit">
+                <input type="submit" name = "make_poem" value= "Make me a Quora poem!" />
+            </div>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+
+                    {% for message in messages %}
+                        <div>
+                        {{ message[1]}}
+                        </div>
+                    {% endfor %}
+
+            {% endif %}
+        {% endwith %}
+
+<div class="fb-like" data-href="https://quora-poem.appspot.com" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+<div>
+<a class="twitter-share-button"
+  href="https://twitter.com/share"
+  data-size="large"
+  data-text="custom share text"
+  data-url="https://dev.twitter.com/web/tweet-button"
+  data-hashtags="example,demo"
+  data-via="twitterdev"
+  data-related="twitterapi,twitter">
+Tweet
+</a>
+     </div>
+     <a href= "https://github.com/lizhao1993/quora-poem-maker" >Source</a>
+     </div>
+
+    </div>
+{%- endblock %}
